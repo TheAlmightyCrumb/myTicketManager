@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import logo from './logo.svg';
 import Ticket from './components/Ticket';
 import './App.css';
 import axios from 'axios';
@@ -7,7 +6,6 @@ import axios from 'axios';
 function App() {
 
   const [ticketsShown, setTicketsShown] = useState([]);
-  // const [hiddenTicketsCounter, setHiddenTicketsCounter] = useState(0);
 
   useEffect(() => {
     showTicketsFromServer();
@@ -35,7 +33,6 @@ function App() {
     let hideArr = ticketsShown.map(ticket => {
       return ticket.id === ticketId ? { ...ticket , hide: true } : ticket ; 
     });
-    // setTicketsShown(hideArr.filter(ticket => !ticket.hide));
     setTicketsShown(hideArr);
   }
 

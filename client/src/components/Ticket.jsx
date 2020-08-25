@@ -8,9 +8,13 @@ function Ticket({ticket, handleClick}) {
         );
     }
 
+    const showFullDate = (ms) => {
+        const createdAt = new Date(ms);
+        return `${createdAt.getDate()}/${createdAt.getMonth() + 1}/${createdAt.getFullYear()} 
+        ${createdAt.getHours()}:${createdAt.getMinutes()}:${createdAt.getSeconds()}`;
+    }
+
     return (
-        // <>
-        // {ticket.labels && (
         <div className='ticket'>
             <button
                 className='hideTicketButton' 
@@ -18,14 +22,12 @@ function Ticket({ticket, handleClick}) {
             >Hide</button>
             id: {ticket.id}, <br />
             title: {ticket.title} <br />
-            created at: { ticket.creationTime}<br/>
+            created at: {showFullDate(ticket.creationTime)}<br/>
             mail: {ticket.userEmail}<br/>
             content: {ticket.content} <br/>
             {ticket.labels && <div>labels: {showLabel(ticket)}</div>} 
             <br /> 
         </div>
-        // )}
-        // </>
     )
 }
 
