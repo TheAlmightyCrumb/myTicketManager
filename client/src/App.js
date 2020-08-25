@@ -45,17 +45,24 @@ function App() {
 
   const visualTicketsArr = ticketsShown.filter(ticket => !ticket.hide);
   const hiddenTicketsCounter = ticketsShown.length - visualTicketsArr.length;
-  
+
   return (
     <main>
-       <input 
-        id='searchInput' 
-        placeholder='Search...' 
-        onChange={(e) => showTicketsByTitle(e.target.value)}
-      />
-      <button id='restoreHideTickets' onClick={() => restoreHiddenTickets()}>Restore</button>
-      <div id='hideTicketsCounter'>{hiddenTicketsCounter}</div>
-      {showTickets(visualTicketsArr)}
+      <div id='header'>
+        <input 
+          id='searchInput' 
+          placeholder='Search Ticket...' 
+          onChange={(e) => showTicketsByTitle(e.target.value)}
+        />
+        <section id='hidden-section'>
+          <div id='restoreHideTickets' onClick={() => restoreHiddenTickets()}>Restore</div>
+          <div id='hideTicketsCounter'>{hiddenTicketsCounter}</div>
+          {hiddenTicketsCounter ? <div>Hidden Tickests</div> : <></>}
+        </section>
+      </div>
+      <section id='tickets-section'>
+        {showTickets(visualTicketsArr)}
+      </section>
     </main>
   );
 }

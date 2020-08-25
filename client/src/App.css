@@ -1,3 +1,56 @@
+#header {
+    display: flex;
+    flex-flow: column wrap;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: maroon;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+#searchInput {
+    align-self: center;
+    width:50%;
+    padding: 10px;
+}
+
+#hidden-section {
+    align-self: flex-end;
+    display: flex;
+    flex-flow: row wrap;
+    width: 30%;
+    justify-content: space-evenly;
+    padding: 10px;
+    font-size:18px;
+}
+
+#hideTicketsCounter {
+    order: 1;
+    color: white;
+    font-weight: bold;
+}
+
+#restoreHideTickets {
+    order: 2;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#restoreHideTickets:hover {
+    background-color:white;
+    color: maroon;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#tickets-section {
+    margin-top:110px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .ticket {
-    
+    flex-flow: row wrap;
 }
