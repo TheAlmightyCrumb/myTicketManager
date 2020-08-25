@@ -6,22 +6,59 @@ import axios from 'axios';
 
 function App() {
 
-  const [ticketsShown, setTicketsShown] = useState();
+  const [ticketsShown, setTicketsShown] = useState([]);
+  // const [hiddenTicketsCounter, setHiddenTicketsCounter] = useState(0);
 
   useEffect(() => {
     showTicketsFromServer();
   }, [])
   
-  const showTicketsFromServer = async () => {
-    const ticketsArray = await axios.get('http://localhost:8080/api/tickets');
-    let newTicketsArray = [];
-    ticketsArray.forEach(ticket => { newTicketsArray.push( <Ticket /> ) });
-    setTicketsShown(newTicketsArray);
+  const showTickets = (ticketsArr) => {
+    ticketsArr = ticketsArr.map( ticket => {
+      return <Ticket key={ticket.id} ticket={ticket} handleClick={hideTicketByClick} />
+    });
+    return ticketsArr;
   }
+  
+  const showTicketsFromServer = async () => {
+    let ticketsArray = await (await axios.get('/api/tickets')).data;
+    console.log(ticketsArray);
+    setTicketsShown(ticketsArray);
+  }
+
+  const showTicketsByTitle = async (title) => {
+    let searchedTicketsArray = await (await axios.get(`/api/tickets?searchText=${title}`)).data;
+    setTicketsShown(searchedTicketsArray);
+  }
+
+  const hideTicketByClick = (ticketId) => {
+    let hideArr = ticketsShown.map(ticket => {
+      return ticket.id === ticketId ? { ...ticket , hide: true } : ticket ; 
+    });
+    // setTicketsShown(hideArr.filter(ticket => !ticket.hide));
+    setTicketsShown(hideArr);
+  }
+
+  const restoreHiddenTickets = () => {
+    let restoreArr = ticketsShown.map(ticket => {
+      return { ...ticket , hide: false } 
+    });
+    setTicketsShown(restoreArr);
+  }
+
+  const visualTicketsArr = ticketsShown.filter(ticket => !ticket.hide);
+  const hiddenTicketsCounter = ticketsShown.length - visualTicketsArr.length;
   
   return (
     <main>
-      {ticketsShown}
+       <input 
+        id='searchInput' 
+        placeholder='Search...' 
+        onChange={(e) => showTicketsByTitle(e.target.value)}
+      />
+      <button id='restoreHideTickets' onClick={() => restoreHiddenTickets()}>Restore</button>
+      <div id='hideTicketsCounter'>{hiddenTicketsCounter}</div>
+      {showTickets(visualTicketsArr)}
     </main>
   );
 }
