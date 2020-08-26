@@ -23,34 +23,46 @@
     justify-content: space-evenly;
     padding: 10px;
     font-size:18px;
+    color: white;
+    font-weight: bold;
 }
 
 #hideTicketsCounter {
     order: 1;
-    color: white;
-    font-weight: bold;
 }
 
 #restoreHideTickets {
     order: 2;
-    color: white;
     cursor: pointer;
-    font-weight: bold;
 }
 
 #restoreHideTickets:hover {
     background-color:white;
     color: maroon;
     cursor: pointer;
-    font-weight: bold;
 }
 
 #tickets-section {
     margin-top:110px;
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 .ticket {
     flex-flow: row wrap;
+    margin: 25px;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.show-more {
+    font-weight:bold;
+}
+
+.show-more:hover {
+    font-weight:bold;
+    cursor: pointer;
+    text-decoration: underline;
 }

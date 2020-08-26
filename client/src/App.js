@@ -57,7 +57,7 @@ function App() {
         <section id='hidden-section'>
           <div id='restoreHideTickets' onClick={() => restoreHiddenTickets()}>Restore</div>
           <div id='hideTicketsCounter'>{hiddenTicketsCounter}</div>
-          {hiddenTicketsCounter ? <div>Hidden Tickests</div> : <></>}
+          {hiddenTicketsCounter ? <div>Hidden Tickets</div> : <></>}
         </section>
       </div>
       <section id='tickets-section'>
