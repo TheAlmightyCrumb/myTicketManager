@@ -1,6 +1,5 @@
 const express = require('express');
 const fs = require('fs').promises;
-// const url = require('url');
 
 const app = express();
 
@@ -11,9 +10,9 @@ app.get('/api/tickets', async (req, res) => {
   const dataJson = await fs.readFile('./data.json');
   const ticketsArray = JSON.parse(dataJson);
   const { searchText } = req.query;
-  // const searchText = url.parse(req.url, true).query.searchText;
   if (searchText) {
-    const filteredTicketsArray = ticketsArray.filter((ticket) => ticket.title.toLowerCase().includes(searchText.toLowerCase()));
+    const filteredTicketsArray = ticketsArray.filter((ticket) => (
+      ticket.title.toLowerCase().includes(searchText.toLowerCase())));
     res.send(filteredTicketsArray);
   } else {
     res.send(ticketsArray);
