@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Ticket from './components/Ticket';
 import './App.css';
 import axios from 'axios';
+import emoji from './poop-emoji-512X512.png';
 
 function App() {
 
@@ -48,6 +49,10 @@ function App() {
 
   return (
     <main>
+      <div id='app-top'>
+        <img src={emoji} id='emoji' alt='emoji' />
+        <h1>The Almighty Ticket Manager - Organized, Well-Written Just For You Mates!</h1>
+      </div>
       <div id='header'>
         <input 
           id='searchInput' 
@@ -57,7 +62,7 @@ function App() {
         <section id='hidden-section'>
           <div id='restoreHideTickets' onClick={() => restoreHiddenTickets()}>Restore</div>
           <div id='hideTicketsCounter'>{hiddenTicketsCounter}</div>
-          {hiddenTicketsCounter ? <div>Hidden Tickets</div> : <></>}
+          {hiddenTicketsCounter ? <div>Hidden Tickets:</div> : <></>}
         </section>
       </div>
       <section id='tickets-section'>

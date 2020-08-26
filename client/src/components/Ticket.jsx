@@ -21,28 +21,24 @@ function Ticket({ ticket, handleClick }) {
 
   return (
     <div className="ticket">
-      <button
-        className="hideTicketButton"
-        onClick={() => handleClick(ticket.id)}
-      >
-        Hide
-      </button>
-      id: {ticket.id}, <br />
-      title: {ticket.title} <br />
-      created at: {showFullDate(ticket.creationTime)}
-      <br />
-      mail: {ticket.userEmail}
-      <br />
-      content:
+      <div className='ticket-top'>
+        <h2>{ticket.title}</h2>
+        <div
+          className="hideTicketButton"
+          onClick={() => handleClick(ticket.id)}
+        >
+          Hide
+        </div>
+      </div>
       {showMoreFlag ? (
-        <div>
+        <div className='content'>
           {ticket.content}
           <div className="show-more" onClick={() => setShowMoreFlag(!showMoreFlag)}>
             Show Less
           </div>
         </div>
       ) : (
-        <div>
+        <div className='content'>
           <div>{ticket.content.substring(0, 100)}</div>
           <div
             className="show-more"
@@ -52,8 +48,14 @@ function Ticket({ ticket, handleClick }) {
           </div>
         </div>
       )}
-      {ticket.labels && <div>labels: {showLabel(ticket)}</div>}
-      <br />
+      <div className='ticket-bottom'>
+        <div className='writer-details'>
+        By: {ticket.userEmail} | {showFullDate(ticket.creationTime)} 
+        </div>
+        <div className='label-container'>
+        {ticket.labels && showLabel(ticket)}
+        </div>
+      </div>
     </div>
   );
 }
