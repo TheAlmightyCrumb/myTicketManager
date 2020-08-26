@@ -50,8 +50,11 @@ function App() {
   return (
     <main>
       <div id='app-top'>
-        <img src={emoji} id='emoji' alt='emoji' />
-        <h1>The Almighty Ticket Manager - Organized, Well-Written Just For You Mates!</h1>
+        <div className='top-left'>
+          <img src={emoji} id='emoji' alt='emoji' />
+          <h1>The Almighty Ticket Manager</h1>
+        </div>
+        <a className='link' href='https://github.com/TheAlmightyCrumb' target='_blank' rel='noopener noreferrer'>@TheAlmightyCrumb on GitHub</a>
       </div>
       <div id='header'>
         <input 
