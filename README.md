@@ -64,5 +64,5 @@ Use a popular style guide - Airbnb
 * Code quality: Variable naming, meaningful comments, logic separation into functions
 * Git usage: commit messages, and overall git usage flow
 
-[GIF](client\ui-testing-recording.gif)
+[GIF](./client/ui-testing-recording.gif)
 [Glitch](https://glitch.com/~same-pickle-xylophone)
