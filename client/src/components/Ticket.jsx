@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 function Ticket({ ticket, handleClick }) {
   const [showMoreFlag, setShowMoreFlag] = useState(false);
 
-  const showLabel = (ticketHasLabel) => ticketHasLabel.labels.map((label) => (
-    <div key={label} className="label">
+  const showLabel = (ticketHasLabel) => ticketHasLabel.labels.map((label, index) => (
+    <div key={index} className="label">
       {label}
     </div>
   ));
