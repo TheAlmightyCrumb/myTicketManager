@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('../client/build'));
 
 app.get('/api/tickets', async (req, res) => {
   const dataJson = await fs.readFile('./data.json');
